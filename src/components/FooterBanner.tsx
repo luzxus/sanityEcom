@@ -18,9 +18,7 @@ import { urlForImage } from "../../sanity/lib/image";
     image: string;
   };
 }; */
-type FooterBannerProps = {
-  img: string;
-};
+
 const FooterBanner: FC<{ footerBanner: any }> = ({ footerBanner }) => {
   console.log("props", footerBanner);
   return (

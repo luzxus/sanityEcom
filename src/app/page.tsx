@@ -5,11 +5,11 @@ import { FC, useEffect, useState } from "react";
 import { client } from "../../sanity/lib/client";
 import { FooterBanner, HeroBanner, Product } from "../components/index";
 //eftersom denna är skapad i root dir så blir detta våran / route sida
-
+/* 
 type HomeProps = {
   products: any;
   bannerData: Herobanner;
-};
+}; */
 
 const fetchData = async () => {
   const query = '*[_type == "product"]'; //grab all products from sanity
@@ -34,7 +34,7 @@ const fetchData = async () => {
   console.log("DATA", data);
   return data;
 };
-const Home: FC<HomeProps> = () => {
+const Home = () => {
   const [productData, setProductData] = useState<any[]>();
   const [bannerData, setBannerData] = useState<any[]>();
   const [imageData, setImageData] =
