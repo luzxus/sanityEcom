@@ -35,7 +35,7 @@ const ProductDetails = () => {
   console.log("slug", slugParam.slug.toString());
 
   useEffect(() => {
-    getData({
+    fetchData({
       params: {
         slug: slugParam.slug.toString(),
       },
@@ -156,7 +156,7 @@ const ProductDetails = () => {
   );
 };
 
-export const getData = async ({
+const fetchData = async ({
   params: { slug },
 }: {
   params: { slug: string };
