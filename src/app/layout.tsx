@@ -2,7 +2,7 @@ import { Footer, Navbar } from "@/components";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-
+import { Analytics } from "@vercel/analytics/react";
 const inter = Inter({ subsets: ["latin"] });
 /* className={inter.className} */
 export const metadata: Metadata = {
@@ -27,6 +27,7 @@ export default function RootLayout({
             <Footer />
           </footer>
         </div>
+        <Analytics />
       </body>
     </html>
   );
