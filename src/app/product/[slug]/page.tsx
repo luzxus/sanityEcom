@@ -67,15 +67,19 @@ const ProductDetails = () => {
       <div className="product-detail-container">
         <div>
           <div className="image-container">
-            <Image
-              src={
-                urlForImage(
-                  imageUrl && imageUrl.length > 0 && imageUrl[index]
-                ).toString() ?? ""
-              }
-              className="product-detail-image"
-              alt="image"
-            />
+            {imageUrl && imageUrl.length > 0 && (
+              <Image
+                src={
+                  urlForImage(
+                    imageUrl && imageUrl.length > 0 && imageUrl[index]
+                  )?.toString() ?? ""
+                }
+                width={300}
+                height={300}
+                className="product-detail-image"
+                alt="image"
+              />
+            )}
           </div>
           <div className="small-images-container">
             {imageUrl &&
@@ -84,7 +88,9 @@ const ProductDetails = () => {
                 <Image
                   key={i}
                   alt="image"
-                  src={urlForImage(item).toString() ?? ""}
+                  width={300}
+                  height={300}
+                  src={urlForImage(item)?.toString() ?? ""}
                   className={
                     i === index ? "small-image selected-image" : "small-image"
                   }
@@ -148,29 +154,6 @@ const ProductDetails = () => {
       </div>
     </div>
   );
-};
-
-export const getStaticPaths = async () => {
-  //dra ut imageUrl från product -> image -> asset
-  const query = `*[_type == "product"] {
-    slug {
-      current
-    }
-  }
-  `;
-
-  const products = await client.fetch(query);
-
-  const paths = products.map((product: any) => ({
-    params: {
-      slug: product.slug.current,
-    },
-  }));
-
-  return {
-    paths,
-    fallback: "blocking",
-  };
 };
 
 export const getData = async ({
