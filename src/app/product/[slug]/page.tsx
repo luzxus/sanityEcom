@@ -1,38 +1,38 @@
-"use client";
-import React, { useEffect, useState } from "react";
+'use client'
+import React, { useEffect, useState } from 'react'
 import {
   AiOutlineMinus,
   AiOutlinePlus,
   AiFillStar,
   AiOutlineStar,
-} from "react-icons/ai";
+} from 'react-icons/ai'
 
-import { InferGetStaticPropsType } from "next";
-import { urlForImage } from "../../../../sanity/lib/image";
-import { Product } from "@/components";
-import { client } from "../../../../sanity/lib/client";
-import { useParams } from "next/navigation";
-import Image from "next/image";
+import { InferGetStaticPropsType } from 'next'
+import { urlForImage } from '../../../../sanity/lib/image'
+import { Product } from '@/components'
+import { client } from '../../../../sanity/lib/client'
+import { useParams } from 'next/navigation'
+import Image from 'next/image'
 
 export interface Product {
-  name: string;
-  details: string;
-  _id: string;
-  _updatedAt: string;
-  imageUrl: string[];
-  slug: string;
-  image: string[];
-  price: number;
-  _createdAt: string;
-  _rev: string;
-  _type: string;
+  name: string
+  details: string
+  _id: string
+  _updatedAt: string
+  imageUrl: string[]
+  slug: string
+  image: string[]
+  price: number
+  _createdAt: string
+  _rev: string
+  _type: string
 }
 
 const ProductDetails = () => {
-  const [product, setProduct] = useState<Product>({} as Product);
-  const [products, setProducts] = useState<any[]>();
-  const slugParam = useParams();
-  console.log("slug", slugParam.slug.toString());
+  const [product, setProduct] = useState<Product>({} as Product)
+  const [products, setProducts] = useState<any[]>()
+  const slugParam = useParams()
+  console.log('slug', slugParam.slug.toString())
 
   useEffect(() => {
     fetchData({
@@ -40,28 +40,25 @@ const ProductDetails = () => {
         slug: slugParam.slug.toString(),
       },
     }).then((res) => {
-      console.log("REs", res);
-      setProduct(res.product);
-      setProducts(res.products);
-    });
-  }, [slugParam.slug]);
-  const { imageUrl, name, details, price } = product;
+      setProduct(res.product)
+      setProducts(res.products)
+    })
+  }, [slugParam.slug])
+  const { imageUrl, name, details, price } = product
 
-  console.log("image url", imageUrl);
+  const [index, setIndex] = useState(0)
+  const { decQty, incQty, qty, onAdd, setShowCart } = {} as any
 
-  console.log("product", product);
-  const [index, setIndex] = useState(0);
-  const { decQty, incQty, qty, onAdd, setShowCart } =
-    {} as any; /* useStateContext(); */
+  /* useStateContext(); */
 
   const handleBuyNow = () => {
-    return;
+    return
     /* onAdd(product, qty);
 
     setShowCart(true); */
-  };
+  }
 
-  console.log("image index", imageUrl && imageUrl[0]);
+  console.log('image index', imageUrl && imageUrl[0])
   return (
     <div>
       <div className="product-detail-container">
@@ -71,8 +68,8 @@ const ProductDetails = () => {
               <Image
                 src={
                   urlForImage(
-                    imageUrl && imageUrl.length > 0 && imageUrl[index]
-                  )?.toString() ?? ""
+                    imageUrl && imageUrl.length > 0 && imageUrl[index],
+                  )?.toString() ?? ''
                 }
                 width={300}
                 height={300}
@@ -90,9 +87,9 @@ const ProductDetails = () => {
                   alt="image"
                   width={300}
                   height={300}
-                  src={urlForImage(item)?.toString() ?? ""}
+                  src={urlForImage(item)?.toString() ?? ''}
                   className={
-                    i === index ? "small-image selected-image" : "small-image"
+                    i === index ? 'small-image selected-image' : 'small-image'
                   }
                   onMouseEnter={() => setIndex(i)}
                 />
@@ -153,29 +150,27 @@ const ProductDetails = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
 const fetchData = async ({
   params: { slug },
 }: {
-  params: { slug: string };
+  params: { slug: string }
 }) => {
   const query = `*[_type == "product" && slug.current == '${slug}'][0]{
     ...,
     "imageUrl": image[].asset->url
-  }`;
-  const productsQuery = '*[_type == "product"]';
+  }`
+  const productsQuery = '*[_type == "product"]'
 
-  const product = await client.fetch(query);
-  const products = await client.fetch(productsQuery);
-
-  console.log(product);
+  const product = await client.fetch(query)
+  const products = await client.fetch(productsQuery)
 
   return {
     product,
     products,
-  };
-};
+  }
+}
 
-export default ProductDetails;
+export default ProductDetails
