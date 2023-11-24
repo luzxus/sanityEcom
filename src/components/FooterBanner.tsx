@@ -3,10 +3,16 @@ import { FC } from 'react'
 
 import Image from 'next/image'
 import { urlForImage } from '../../sanity/lib/image'
-import { Banner } from './HeroBanner'
 
 type FooterBannerProps = {
-  footerBanner: Banner & {
+  footerBanner: {
+    smallText: string
+    midText: string
+    largeText1: string
+    image: string
+    product: number | string
+    buttonText: string
+    desc: string
     discount: number
     largeText2: string
     saleTime: number
