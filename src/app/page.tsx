@@ -9,13 +9,14 @@ async function HomePage() {
   return (
     <div>
       <HeroBanner
+        backgroundImage={images[0].imageUrl}
         heroBanner={
           bannerData && bannerData?.length > 0 ? bannerData[0] : ({} as any)
         }
       />
       <div className="products-heading">
         <h2>Bäst säljande produkter</h2>
-        <p>Talare av många variationer</p>
+        <p>Utvalda produkter från vårat sortiment</p>
         <div className="products-container">
           {products?.map((product: any) => (
             <Product product={product} key={product._id} />

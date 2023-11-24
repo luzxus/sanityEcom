@@ -41,13 +41,13 @@ const FooterBanner: FC<FooterBannerProps> = ({ footerBanner }) => {
           <h3>{largeText2}</h3>
           <p>{saleTime}</p>
         </div>
-        <Image
+        {/*   <Image
           src={image && urlForImage(image).toString()}
           width={300}
           height={250}
           style={{ top: '6rem', right: '10rem' }}
           alt=""
-        />
+        /> */}
         <div className="right">
           <p>{smallText}</p>
           <h3>{midText}</h3>

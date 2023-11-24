@@ -28,7 +28,7 @@ const Product: FC<ProductProps> = ({
             alt="product image"
           />
           <p className="product-name">{name}</p>
-          <p className="product-price">${price}</p>
+          <p className="product-price">{price}kr</p>
         </div>
       </Link>
     </div>

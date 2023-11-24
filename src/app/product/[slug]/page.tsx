@@ -13,8 +13,8 @@ import { Product } from '@/components'
 import { client } from '../../../../sanity/lib/client'
 import { useParams } from 'next/navigation'
 import Image from 'next/image'
-
-export interface Product {
+import { useStateContext } from '../../../../context/StateContext'
+/* export interface Product {
   name: string
   details: string
   _id: string
@@ -26,8 +26,9 @@ export interface Product {
   _createdAt: string
   _rev: string
   _type: string
-}
+} */
 
+type Product = any
 const ProductDetails = () => {
   const [product, setProduct] = useState<Product>({} as Product)
   const [products, setProducts] = useState<any[]>()
@@ -47,15 +48,20 @@ const ProductDetails = () => {
   const { imageUrl, name, details, price } = product
 
   const [index, setIndex] = useState(0)
-  const { decQty, incQty, qty, onAdd, setShowCart } = {} as any
-
-  /* useStateContext(); */
+  const {
+    decQty,
+    incQty,
+    qty,
+    showCart,
+    onAdd,
+    onRemove,
+    setShowCart,
+  } = useStateContext()
 
   const handleBuyNow = () => {
-    return
-    /* onAdd(product, qty);
+    onAdd(product, qty)
 
-    setShowCart(true); */
+    setShowCart(true)
   }
 
   console.log('image index', imageUrl && imageUrl[0])
@@ -109,17 +115,17 @@ const ProductDetails = () => {
             </div>
             <p>(20)</p>
           </div>
-          <h4>Details: </h4>
+          <h4>Produkt beskrivning: </h4>
           <p>{details}</p>
-          <p className="price">${price}</p>
+          <p className="price">{price}kr</p>
           <div className="quantity">
-            <h3>Quantity:</h3>
+            <h3>Kvantitet:</h3>
             <p className="quantity-desc">
-              <span className="minus" onClick={decQty}>
+              <span className="minus" onClick={() => decQty(qty)}>
                 <AiOutlineMinus />
               </span>
               <span className="num">{qty}</span>
-              <span className="plus" onClick={incQty}>
+              <span className="plus" onClick={() => incQty(qty)}>
                 <AiOutlinePlus />
               </span>
             </p>
@@ -130,17 +136,17 @@ const ProductDetails = () => {
               className="add-to-cart"
               onClick={() => onAdd(product, qty)}
             >
-              Add to Cart
+              Lägg i varukorg
             </button>
             <button type="button" className="buy-now" onClick={handleBuyNow}>
-              Buy Now
+              Köp nu
             </button>
           </div>
         </div>
       </div>
 
       <div className="maylike-products-wrapper">
-        <h2>You may also like</h2>
+        <h2>Du kanske också gillar</h2>
         <div className="marquee">
           <div className="maylike-products-container track">
             {products?.map((item: any) => (
