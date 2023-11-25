@@ -1,5 +1,5 @@
 import { GetServerSidePropsResult, GetStaticPropsResult } from 'next'
-import { client } from '../../sanity/lib/client'
+import { client } from '../../../sanity/lib/client'
 import { cache } from 'react'
 
 type HomeProps = {
@@ -25,6 +25,22 @@ export const fetchData = async () => {
     products: products,
     bannerData: bannerData,
     images: imageData,
+  }
+  return {
+    props: data,
+  }
+}
+
+export const fetchCategories = async () => {
+  const categoryQuery = '*[_type == "category"]' //grab all products from sanity
+  const categories = await client.fetch(categoryQuery)
+
+  const tagsQuery = '*[_type == "tags"]' //grab all products from sanity
+  const tags = await client.fetch(tagsQuery)
+
+  const data = {
+    categories,
+    tags,
   }
   console.log('DATA', data)
   return {

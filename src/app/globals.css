@@ -29,6 +29,7 @@ a {
 
 .navbar-container {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   margin: 6px 18px;
   position: relative;
@@ -198,7 +199,7 @@ span.text-red {
 .products-heading {
   text-align: center;
   margin: 40px 0px;
-  color: #7f0c0cc4
+  color: #7f0c0cc4;
 }
 .products-heading h2 {
   font-size: 40px;
@@ -751,3 +752,24 @@ span.text-red {
     margin: auto;
   }
 }
+
+.navbar-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.pages-list {
+  display: flex;
+  justify-content: space-around;
+  flex: 1;
+}
+
+.categories-list {
+  display: flex;
+  justify-content: space-around;
+  flex: 1;
+}
+
+
+/* mobile */

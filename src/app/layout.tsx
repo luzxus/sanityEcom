@@ -22,7 +22,7 @@ export default function RootLayout({
       <body>
         <StateContext>
           <div className="layout">
-            <Toaster />
+            <Toaster/>
             <header>
               <Navbar />
             </header>

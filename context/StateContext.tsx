@@ -41,7 +41,7 @@ export const StateContext = ({ children }: Props) => {
   const [cartItems, setCartItems] = useState<Product[]>([])
   const [totalPrice, setTotalPrice] = useState<number>(0)
   const [totalQuantities, setTotalQuantities] = useState<number>(0)
-  const [qty, setQty] = useState<number>(0)
+  const [qty, setQty] = useState<number>(1)
 
   let foundProduct: Product | undefined
   let index: number

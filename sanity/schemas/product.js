@@ -3,14 +3,14 @@ export default {
   name: "product",
   title: "Product",
   type: "document",
-  fields: [ //here we define what fields as objects which we want our product model to have
+  fields: [
     {
       name: "image",
       title: "Image",
       type: "array",
-      of: [{ type: "image" }], //an array of (type) image
+      of: [{ type: "image" }],
       options: {
-        hotspot: true, //possibility to crop our images
+        hotspot: true,
       },
     },
     {
@@ -23,7 +23,7 @@ export default {
       title: "Slug",
       type: "slug",
       options: {
-        source: "name", //will auto generate a unique slug based on our name property
+        source: "name",
         maxLength: 90,
       },
     },
@@ -36,6 +36,24 @@ export default {
       name: "details",
       title: "Details",
       type: "string",
+    },
+    {
+      name: "discount",
+      title: "Discount",
+      type: "number",
+      validation: (Rule) => Rule.optional(), // make the field optional
+    },
+    {
+      name: "category",
+      title: "Category",
+      type: "reference",
+      to: [{ type: "category" }], // Reference to the category schema
+    },
+    {
+      name: "tags",
+      title: "Tags",
+      type: "array",
+      of: [{ type: "reference", to: [{ type: "tag" }] }], // Reference to the tag schema
     },
   ],
 };

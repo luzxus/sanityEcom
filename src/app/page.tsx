@@ -1,4 +1,4 @@
-import { fetchData } from '@/api'
+import { fetchData } from '@/pages/api'
 import { FooterBanner, HeroBanner, Product } from '../components/index'
 //eftersom denna är skapad i root dir så blir detta våran / route sida
 

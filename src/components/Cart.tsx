@@ -9,7 +9,7 @@ import {
 } from 'react-icons/ai'
 import { TiDeleteOutline } from 'react-icons/ti'
 import toast from 'react-hot-toast'
-
+import getStripe from '../../sanity/lib/getStripe'
 import { urlForImage } from '../../sanity/lib/image'
 import Image from 'next/image'
 import { useStateContext } from '../../context/StateContext'
@@ -25,26 +25,43 @@ const Cart = () => {
     onRemove,
   } = useStateContext()
 
-  /*   const handleCheckout = async () => {
-    //const stripe = await getStripe()
+  const handleCheckout = async () => {
+    const stripe = await getStripe()
 
-    const response = await fetch('/api/stripe', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(cartItems),
-    })
+    console.log('env', process.env.NEXT_STRIPE_PUBLIC_PUBLISH_KEY)
 
-    if (response.statusCode === 500) return
+    const cartData: any[] = cartItems
+      ? cartItems.map((item) => ({
+          productId: item._id,
+          quantity: item.quantity,
+        }))
+      : []
 
-    const data = await response.json()
+    console.log('cartData', cartData)
+    try {
+      const response = await fetch('/api/stripe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization:
+            'Bearer ' +
+            'sk_test_51ODBTSCDDTyH4CHBMTfdnELQKIzD5gmiA4K1laqHaysYD3PEvbzWLAl12xfHBx1RhhnVDwCobtile9FaQ7MJI0Ib00UFoAAv9K',
+        },
+        body: JSON.stringify(cartItems),
+      })
 
-    toast.loading('Redirecting...')
+      if (response.status === 500) return
 
-    stripe.redirectToCheckout({ sessionId: data.id })
+      const data = await response.json()
+
+      toast.loading('Redirecting...')
+
+      stripe!.redirectToCheckout({ sessionId: data.id })
+    } catch (err) {
+      console.log('error while trying to post', err)
+    }
   }
- */
+
   return (
     <div className="cart-wrapper" ref={cartRef}>
       <div className="cart-container">
@@ -133,8 +150,8 @@ const Cart = () => {
               <h3>{totalPrice}kr</h3>
             </div>
             <div className="btn-container">
-              <button type="button" className="btn" onClick={() => {}}>
-                Betala nu
+              <button type="button" className="btn" onClick={handleCheckout}>
+                Till kassan{' '}
               </button>
             </div>
           </div>

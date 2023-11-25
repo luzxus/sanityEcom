@@ -7,7 +7,6 @@ import {
   AiOutlineStar,
 } from 'react-icons/ai'
 
-import { InferGetStaticPropsType } from 'next'
 import { urlForImage } from '../../../../sanity/lib/image'
 import { Product } from '@/components'
 import { client } from '../../../../sanity/lib/client'
@@ -33,18 +32,19 @@ const ProductDetails = () => {
   const [product, setProduct] = useState<Product>({} as Product)
   const [products, setProducts] = useState<any[]>()
   const slugParam = useParams()
-  console.log('slug', slugParam.slug.toString())
+  const slug = (slugParam && slugParam.slug) ?? ''
+  console.log('slug', slug.toString())
 
   useEffect(() => {
     fetchData({
       params: {
-        slug: slugParam.slug.toString(),
+        slug: slug.toString(),
       },
     }).then((res) => {
       setProduct(res.product)
       setProducts(res.products)
     })
-  }, [slugParam.slug])
+  }, [slug])
   const { imageUrl, name, details, price } = product
 
   const [index, setIndex] = useState(0)
@@ -64,7 +64,6 @@ const ProductDetails = () => {
     setShowCart(true)
   }
 
-  console.log('image index', imageUrl && imageUrl[0])
   return (
     <div>
       <div className="product-detail-container">
