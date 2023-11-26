@@ -32,8 +32,6 @@ const HeroBanner: FC<HeroBannerProps> = ({ heroBanner, backgroundImage }) => {
       }}
     >
       <div>
-        <p className="text-section">{heroBanner.smallText}</p>
-        <h3>{heroBanner.midText}</h3>
         <h1>{heroBanner.largeText1}</h1>
         {/*   <Image
           src={urlForImage(heroBanner.image).toString()}
