@@ -47,3 +47,31 @@ export const fetchCategories = async () => {
     props: data,
   }
 }
+
+export const fetchAboutData = async () => {
+  const data = await client.fetch(`*[_type == "about"][0]{
+    paragraph1,
+    paragraph2,
+    paragraph3,
+    paragraph4,
+    paragraph5,
+    title,
+    "imageUrl1": image1.asset -> url,
+    "imageUrl2": image2.asset -> url,
+    "imageUrl3": image3.asset -> url,
+    paraTitle1,
+    paraTitle2,
+    paraTitle3,
+    paraTitle4,
+    paraTitle5,
+  }`)
+  return {
+    data,
+  }
+}
+
+export const fetchContactData = async () => {
+  const data = await client.fetch('*[_type == "contact"][0]')
+
+  return { data }
+}

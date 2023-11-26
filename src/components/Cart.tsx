@@ -79,15 +79,14 @@ const Cart = () => {
           <div className="empty-cart">
             <AiOutlineShopping size={150} />
             <h3>Din varukorg är tom</h3>
-            <Link href="/">
-              <button
-                type="button"
-                onClick={() => setShowCart(false)}
-                className="btn"
-              >
-                Fortsätt handla
-              </button>
-            </Link>
+
+            <button
+              type="button"
+              onClick={() => setShowCart(false)}
+              className="btn"
+            >
+              Fortsätt handla
+            </button>
           </div>
         )}
 
