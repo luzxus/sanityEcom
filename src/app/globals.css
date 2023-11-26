@@ -17,23 +17,15 @@ a {
 }
 
 .main-container {
-  max-width: 1400px;
-  margin: auto;
-  width: 100%;
+  width: 100vw;
+  /*  max-width: 1400px; */
+  /* margin: auto; */
+  /*   width: 100%; */
 }
 .layout {
   background-color: blanchedalmond;
-
-  padding: 10px;
 }
 
-.navbar-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  margin: 6px 18px;
-  position: relative;
-}
 .marquee-text {
   font-size: 29px;
   font-weight: 600;
@@ -66,13 +58,16 @@ a {
   }
 }
 
+
 span.text-red {
   -webkit-text-stroke: 1px #f02d34;
   margin-left: 6px;
 }
 .logo {
+  position: absolute;
   color: gray;
-  font-size: 18px;
+  font-size: 32px;
+  font-weight: 500;
 }
 .cart-icon {
   font-size: 25px;
@@ -134,12 +129,14 @@ span.text-red {
 .hero-banner-container {
   padding: 100px 40px;
   background-color: #ebcf15;
-  border-radius: 15px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
   position: relative;
   height: 500px;
   line-height: 0.9;
   width: 100%;
 }
+
 .hero-banner-container .beats-solo {
   font-size: 20px;
 }
@@ -159,6 +156,7 @@ span.text-red {
 .hero-banner-container h3 {
   font-size: 4rem;
   margin-top: 4px;
+  color: white;
 }
 .hero-banner-container h1 {
   color: white;
@@ -756,8 +754,10 @@ span.text-red {
 .navbar-container {
   position: relative;
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
+  background-color: #fff;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .pages-list {
@@ -765,6 +765,7 @@ span.text-red {
   display: flex;
   justify-content: space-around;
   flex: 1;
+  align-items: center;
 }
 
 .categories-list {
@@ -821,6 +822,7 @@ span.text-red {
 
 @media (max-width: 768px) {
   .navbar-container {
+    background-color: unset;
     flex-direction: row;
     align-items: baseline;
   }
@@ -854,6 +856,7 @@ span.text-red {
 
 .desktop-menu {
   display: flex;
+  flex: 1;
 }
 
 @media (min-width: 768px) {
@@ -933,3 +936,41 @@ span.text-red {
 }
 
 /* Add more styles as needed for different elements */
+
+.desktop-menu .categories-list {
+  background: white;
+  z-index: 100;
+  width: 200px;
+  position: fixed;
+  top: 0;
+  padding: 20px;
+  transform: translateY(-115%);
+  transition-duration: 0.5s;
+  display: flex;
+  flex-direction: column;
+}
+.desktop-menu .categories-list.active {
+  transform: translateY(60px);
+}
+
+.category-menu {
+  position: absolute;
+  left: 10px;
+}
+.category-menu-icon {
+  width: max-content;
+  border: 1px solid rgb(173, 171, 171);
+  border-radius: 50%;
+  align-items: center;
+  display: flex;
+  cursor: pointer;
+
+  position: relative;
+  z-index: 101;
+  padding: 10px;
+}
+
+.navbart-cart {
+  margin-inline-end: 15px;
+  margin-top: 10px;
+}

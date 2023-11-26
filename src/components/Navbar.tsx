@@ -33,6 +33,7 @@ const Navbar = () => {
     { text: 'Fraktinformation', slug: 'shippingInfo' },
   ]
   const [toggleMenu, setToggleMenu] = useState(false)
+  const [toggleCategoryMenu, setToggleCategoryMenu] = useState(false)
   return (
     <div className="navbar-container">
       <div className="menu-icon" onClick={() => setToggleMenu((prev) => !prev)}>
@@ -89,15 +90,25 @@ const Navbar = () => {
           ))}
         </div>
 
-        <div className="categories-list">
-          {categories.map((category) => (
-            <Link
-              key={category._id}
-              href={`/category/${category.slug.current}`}
-            >
-              <p className="products-heading">{category.name.toUpperCase()}</p>
-            </Link>
-          ))}
+        <div className='category-menu'>
+          <div
+            className="category-menu-icon"
+            onClick={() => setToggleCategoryMenu((prev) => !prev)}
+          >
+            {toggleCategoryMenu ? <AiOutlineClose /> : <AiOutlineMenu />}
+          </div>
+          <div className={`categories-list ${toggleCategoryMenu && 'active'}`}>
+            {categories.map((category) => (
+              <Link
+                key={category._id}
+                href={`/category/${category.slug.current}`}
+              >
+                <p className="products-heading">
+                  {category.name.toUpperCase()}
+                </p>
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
       <div className="navbar-cart">
