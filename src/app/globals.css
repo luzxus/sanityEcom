@@ -988,3 +988,12 @@ span.text-red {
   margin-inline-end: 15px;
   margin-top: 10px;
 }
+
+/* Category procust list page */
+.category-product-list {
+  display: flex;
+  gap: 15px;
+  margin: 40px;
+  flex-wrap: wrap;
+  min-height: calc(100vh - 160px); /* 80px margin, 80px navbar */
+}

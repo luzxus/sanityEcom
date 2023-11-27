@@ -1,52 +1,54 @@
-'use client'
-import React, { useEffect, useState } from 'react'
-import Link from 'next/link'
+"use client";
+import React, { useEffect, useState } from "react";
+import Link from "next/link";
 import {
   AiOutlineClose,
   AiOutlineMenu,
   AiOutlineShopping,
-} from 'react-icons/ai'
+} from "react-icons/ai";
 
-import { useStateContext } from '../../context/StateContext'
-import { Cart } from '.'
-import { fetchCategories } from '@/pages/api'
+import { useStateContext } from "../../context/StateContext";
+import { Cart } from ".";
+import { fetchCategories } from "@/pages/api";
 
 type Category = {
-  _id?: string
-  name: string
+  _id?: string;
+  name: string;
   slug: {
-    current: string
-  }
-}
+    current: string;
+  };
+};
 
 const Navbar = () => {
-  const [categories, setCategories] = useState<Category[]>([])
+  const [categories, setCategories] = useState<Category[]>([]);
 
   useEffect(() => {
-    fetchCategories().then((res) => setCategories(res.props.categories))
-  }, [])
+    fetchCategories().then((res) => setCategories(res.props.categories));
+  }, []);
 
-  const { totalQuantities, setShowCart, showCart } = useStateContext()
+  const { totalQuantities, setShowCart, showCart } = useStateContext();
 
   const pages = [
-    { text: 'Om oss', slug: 'about' },
-    { text: 'Fraktinformation', slug: 'shippingInfo' },
-  ]
-  const [toggleMenu, setToggleMenu] = useState(false)
-  const [toggleCategoryMenu, setToggleCategoryMenu] = useState(false)
+    { text: "Om oss", slug: "about" },
+    { text: "Fraktinformation", slug: "shippingInfo" },
+  ];
+  const [toggleMenu, setToggleMenu] = useState(false);
+  const [toggleCategoryMenu, setToggleCategoryMenu] = useState(false);
   return (
     <div className="navbar-container">
       <div className="menu-icon" onClick={() => setToggleMenu((prev) => !prev)}>
         {!toggleMenu ? <AiOutlineMenu /> : <AiOutlineClose />}
       </div>
-      <div className={`sidemenu-container ${toggleMenu && 'active'}`}>
+      <div className={`sidemenu-container ${toggleMenu && "active"}`}>
         <div className="mobile-menu">
           <div className="pages-list">
             <p className="logo">
               {!toggleMenu && <Link href="/">Warning Chilizone</Link>}
             </p>
 
-            <p className="submenu-title" style={{marginTop: "4rem"}}>Länkar</p>
+            <p className="submenu-title" style={{ marginTop: "4rem" }}>
+              Länkar
+            </p>
             <Link className="page-heading" key="home" href={`/`}>
               Hem
             </Link>
@@ -67,6 +69,7 @@ const Navbar = () => {
               <Link
                 key={category._id}
                 href={`/category/${category.slug.current}`}
+                onClick={() => setToggleMenu(false)}
               >
                 <p className="category-heading">{category.name}</p>
               </Link>
@@ -82,7 +85,7 @@ const Navbar = () => {
           </p>
           {pages.map((page) => (
             <Link
-              style={{ color: 'rgb(134 104 115)' }}
+              style={{ color: "rgb(134 104 115)" }}
               key={page.slug}
               href={`/${page.slug}`}
             >
@@ -98,13 +101,16 @@ const Navbar = () => {
           >
             {toggleCategoryMenu ? <AiOutlineClose /> : <AiOutlineMenu />}
           </div>
-          <div className={`categories-list ${toggleCategoryMenu && 'active'}`}>
+          <div className={`categories-list ${toggleCategoryMenu && "active"}`}>
             {categories.map((category) => (
               <Link
                 key={category._id}
                 href={`/category/${category.slug.current}`}
               >
-                <p className="products-heading">
+                <p
+                  onClick={() => setToggleCategoryMenu(false)}
+                  className="products-heading"
+                >
                   {category.name.toUpperCase()}
                 </p>
               </Link>
@@ -125,7 +131,7 @@ const Navbar = () => {
         {showCart && <Cart />}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
