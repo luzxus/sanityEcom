@@ -100,6 +100,18 @@ span.text-red {
   margin-top: 20px;
   width: 100%;
 }
+
+@media (max-width: 768px) {
+  .products-container {
+    flex-wrap: nowrap;
+    margin-inline-start: 2.5rem;
+  }
+  .product-card {
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+}
+
 .product-card {
   cursor: pointer;
   transform: scale(1, 1);
@@ -547,7 +559,7 @@ span.text-red {
 .maylike-products-container {
   display: flex;
   justify-content: center;
-  gap: 15px;
+  gap: 50px;
   margin-top: 20px;
 }
 .max-qty {
@@ -779,14 +791,48 @@ span.text-red {
 }
 
 .nextArrow svg {
-  scale: 2;
+  scale: 1.7;
 }
+
 .nextArrow {
+  display: none;
+  border: 1px solid black;
+  color: white;
+  background-color: black;
+  padding: 20px;
+  border-radius: 100%;
   margin: 20px;
   align-self: center;
   cursor: pointer;
 }
 
+@media (min-width: 768px) {
+  .product-arrow-container:nth-child(4) .nextArrow {
+    display: flex;
+  }
+
+  .product-arrow-container:nth-child(4) .nextArrow:hover {
+    transform: translateX(10px);
+    transition: transform 0.5s ease;
+  }
+  .product-arrow-container {
+    display: flex;
+  }
+
+  .product-arrow-container .product-card {
+    opacity: 1;
+    animation: fade 1s ease;
+  }
+
+  @keyframes fade {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}
 /* mobile */
 .sidemenu-container {
   display: flex;

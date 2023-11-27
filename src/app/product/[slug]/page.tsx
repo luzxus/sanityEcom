@@ -148,7 +148,7 @@ const ProductDetails = () => {
         <h2>Du kanske också gillar</h2>
         <div className="marquee">
           <div className="maylike-products-container track">
-            {products?.map((item: any) => (
+            {products?.slice(0,4)?.map((item: any) => (
               <Product key={item._id} product={item} />
             ))}
           </div>

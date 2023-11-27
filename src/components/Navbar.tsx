@@ -65,6 +65,9 @@ const Navbar = () => {
 
           <div className="categories-list">
             <p className="submenu-title">Kategorier</p>
+            <Link href={`/sortiment`} onClick={() => setToggleMenu(false)}>
+              <p className="category-heading">Sortiment</p>
+            </Link>
             {categories.map((category) => (
               <Link
                 key={category._id}
@@ -102,6 +105,28 @@ const Navbar = () => {
             {toggleCategoryMenu ? <AiOutlineClose /> : <AiOutlineMenu />}
           </div>
           <div className={`categories-list ${toggleCategoryMenu && "active"}`}>
+            <p
+              style={{
+                fontWeight: "600",
+                textDecoration: "underline",
+                fontSize: "20px",
+                textAlign: "center",
+              }}
+              className="products-heading"
+            >
+              Kategorier
+            </p>
+            <Link
+              href={`/sortiment`}
+              onClick={() => setToggleCategoryMenu(false)}
+            >
+              <p
+                className="products-heading"
+                style={{ textTransform: "uppercase" }}
+              >
+                Sortimentet
+              </p>
+            </Link>
             {categories.map((category) => (
               <Link
                 key={category._id}
