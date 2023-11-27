@@ -43,9 +43,10 @@ const Navbar = () => {
         <div className="mobile-menu">
           <div className="pages-list">
             <p className="logo">
-              <Link href="/">Warning Chilizone</Link>
+              {!toggleMenu && <Link href="/">Warning Chilizone</Link>}
             </p>
-            <p className="submenu-title">Länkar</p>
+
+            <p className="submenu-title" style={{marginTop: "4rem"}}>Länkar</p>
             <Link className="page-heading" key="home" href={`/`}>
               Hem
             </Link>
@@ -90,7 +91,7 @@ const Navbar = () => {
           ))}
         </div>
 
-        <div className='category-menu'>
+        <div className="category-menu">
           <div
             className="category-menu-icon"
             onClick={() => setToggleCategoryMenu((prev) => !prev)}

@@ -58,7 +58,6 @@ a {
   }
 }
 
-
 span.text-red {
   -webkit-text-stroke: 1px #f02d34;
   margin-left: 6px;
@@ -774,12 +773,26 @@ span.text-red {
   flex: 1;
 }
 
+.products-pagination-container {
+  display: flex;
+  position: relative;
+}
+
+.nextArrow svg {
+  scale: 2;
+}
+.nextArrow {
+  margin: 20px;
+  align-self: center;
+  cursor: pointer;
+}
+
 /* mobile */
 .sidemenu-container {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  position: fixed;
+  position: absolute;
   left: 0;
   top: 0;
   width: 300px;
@@ -828,12 +841,13 @@ span.text-red {
   }
   .menu-icon {
     z-index: 100;
+    margin-inline-start: 10px;
     display: block;
   }
   .logo {
     position: relative;
-    left: 7rem;
     z-index: 1000;
+    left: 21rem;
   }
   .desktop-menu {
     display: none !important;
