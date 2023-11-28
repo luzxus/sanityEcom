@@ -1,23 +1,23 @@
-import Link from 'next/link'
-import { FC } from 'react'
+import Link from "next/link";
+import { FC } from "react";
 
-import Image from 'next/image'
-import { urlForImage } from '../../sanity/lib/image'
+import Image from "next/image";
+import { urlForImage } from "../../sanity/lib/image";
 
 type FooterBannerProps = {
   footerBanner: {
-    smallText: string
-    midText: string
-    largeText1: string
-    image: string
-    product: number | string
-    buttonText: string
-    desc: string
-    discount: number
-    largeText2: string
-    saleTime: number
-  }
-}
+    smallText: string;
+    midText: string;
+    largeText1: string;
+    image: string;
+    product: number | string;
+    buttonText: string;
+    desc: string;
+    discount: number;
+    largeText2: string;
+    saleTime: number;
+  };
+};
 
 const FooterBanner: FC<FooterBannerProps> = ({ footerBanner }) => {
   const {
@@ -30,33 +30,27 @@ const FooterBanner: FC<FooterBannerProps> = ({ footerBanner }) => {
     product,
     saleTime,
     smallText,
-  } = footerBanner
+  } = footerBanner;
 
   return (
     <div className="footer-banner-container">
       <div className="banner-desc">
         <div className="left">
-          <p>{discount}</p>
-          <h3>{largeText1}</h3>
-          <h3>{largeText2}</h3>
-          <p>{saleTime}</p>
+          <h3>{smallText ?? "Mängder av bra deals"}</h3>
+          <h4>{midText}</h4>
+          <h1>{largeText1}</h1>
         </div>
-        {/*   <Image
-          src={image && urlForImage(image).toString()}
-          width={300}
-          height={250}
-          style={{ top: '6rem', right: '10rem' }}
-          alt=""
-        /> */}
+
         <div className="right">
-          <p>{smallText}</p>
-          <h3>{midText}</h3>
-          <p>{desc ?? ''}</p>
-          <Link href={`/product/${product}`}></Link>
+          <h1>{discount}</h1>
+          <h2>{saleTime}</h2>
+          <Link className="cta" href={`/sortiment`}>
+            <button>Utforska</button>
+          </Link>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default FooterBanner
+export default FooterBanner;

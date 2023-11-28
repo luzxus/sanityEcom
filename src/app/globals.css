@@ -230,8 +230,12 @@ span.text-red {
   margin-top: 120px;
 }
 .banner-desc {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  justify-items: center;
 }
 .banner-desc button {
   border-radius: 15px;
@@ -244,30 +248,31 @@ span.text-red {
   font-weight: 500;
   cursor: pointer;
 }
-.banner-desc .left h3 {
+.banner-desc .left h1 {
   font-weight: 900;
-  font-size: 80px;
-  margin-left: 25px;
+  font-size: 5rem;
+  margin-left: 5px;
 }
 .banner-desc .left p {
   margin: 18px;
+  
 }
-.footer-banner-image {
-  position: absolute;
-  /* top: -35%;
-  left: 8%; */
-  top: -25%;
-  left: 25%;
+.banner-desc .right h1 {
+  font-size: 5rem;
 }
-.banner-desc .right {
-  line-height: 1.4;
+.banner-desc .right h2 {
+  
+
+  font-size: 2rem;
 }
-.banner-desc .right h3 {
-  font-weight: 800;
-  font-size: 60px;
+.banner-desc .left h3 {
+  margin-bottom: 1rem;
+  font-size: 2rem;
 }
-.banner-desc .right p {
-  font-size: 18px;
+.banner-desc .left h4 {
+  margin-inline-start: 1rem;
+  margin-bottom: 1rem;
+ 
 }
 .banner-desc .right .company-desc {
   font-size: 14px;
@@ -640,16 +645,31 @@ span.text-red {
     height: 56%;
   }
   .banner-desc .left h3 {
-    font-weight: 900;
-    font-size: 50px;
+    font-weight: 600;
+    font-size: 40px;
     margin-left: 5px;
   }
-  .banner-desc .left p {
+  .banner-desc .left h4 {
+    font-size: 20px;
+    margin-left: 5px;
+  }
+  .banner-desc .left h1 {
+    font-size: 60px;
+    margin-left: 5px;
+  }
+  /* .banner-desc .left p {
     margin: 18px;
-  }
+  } */
   .banner-desc .right h3 {
-    font-size: 45px;
+    font-size: 40px;
   }
+  .banner-desc .right h2 {
+    font-size: 18px;
+  }
+  
+.banner-desc .right h1 {
+  font-size: 60px;
+}
   .banner-desc .right p {
     font-size: 18px;
   }
@@ -1006,7 +1026,7 @@ span.text-red {
 .desktop-menu .categories-list {
   background: white;
   z-index: 100;
-  width: 200px;
+  width: 230px;
   position: absolute;
   top: 0;
   padding: 20px;
