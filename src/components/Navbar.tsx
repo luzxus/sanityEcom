@@ -49,7 +49,12 @@ const Navbar = () => {
             <p className="submenu-title" style={{ marginTop: "4rem" }}>
               Länkar
             </p>
-            <Link className="page-heading" key="home" href={`/`}>
+            <Link
+              className="page-heading"
+              key="home"
+              href={`/`}
+              onClick={() => setToggleMenu(false)}
+            >
               Hem
             </Link>
             {pages.map((page) => (
@@ -57,6 +62,7 @@ const Navbar = () => {
                 className="page-heading"
                 key={page.slug}
                 href={`/${page.slug}`}
+                onClick={() => setToggleMenu(false)}
               >
                 {page.text}
               </Link>

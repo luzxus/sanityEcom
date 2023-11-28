@@ -83,9 +83,11 @@ const CategoryPage = () => {
   return (
     <div className="category-container">
       {categoryBanner && <CategoryBanner categoryBanner={categoryBanner} />}
-      <h1 style={{ textAlign: "center", marginTop: "5rem" }}>
-        Utforska våra produkter
-      </h1>
+      {categoryProducts && (
+        <h1 style={{ textAlign: "center", marginTop: "5rem" }}>
+          Utforska våra produkter
+        </h1>
+      )}
       <div className="category-product-list">
         {!isLoadingData ? (
           categoryProducts ? (
@@ -103,7 +105,9 @@ const CategoryPage = () => {
                   <AiOutlineInfoCircle />
                 </div>
               </div>
-
+              <h1 style={{ textAlign: "center", marginTop: "20px" }}>
+                Våra andra produkter
+              </h1>
               <div className="category-product-list alternative-product-list">
                 {alternativeProducts?.map((altPro) => (
                   <Product product={altPro} key={altPro._id} />

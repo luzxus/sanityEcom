@@ -1,6 +1,6 @@
 .cta-container {
   display: flex;
-  max-height: calc(150px + 20px);
+  max-height: calc(150px + 25px);
   align-items: center;
   justify-content: center;
   padding: 25px;
@@ -14,6 +14,16 @@
   justify-content: flex-end;
   align-items: center;
   gap: 15px;
+}
+
+@media (max-width: 768px) {
+  .cta-container {
+    flex-direction: column;
+    max-height: calc(150px + 50px);
+  }
+  .cta-container .action-button {
+    margin-top: 15px;
+  }
 }
 .cta-container p {
   color: #fff;
