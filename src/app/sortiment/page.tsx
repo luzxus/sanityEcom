@@ -1,5 +1,6 @@
 "use client";
 import { Product } from "@/components";
+import CTA from "@/components/CTA";
 import { fetchData } from "@/pages/api";
 import React, { useEffect, useState } from "react";
 
@@ -29,6 +30,8 @@ const Sortiment = () => {
       ) : (
         "loading"
       )}
+
+      <CTA />
     </div>
   );
 };

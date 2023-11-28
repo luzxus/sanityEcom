@@ -3,6 +3,18 @@ import React from "react";
 import "./CTA.css";
 
 const CTA = () => {
+  const email = "richard156@hotmail.se".toLowerCase();
+
+  const openOutlook = () => {
+    const recipientEmail = email; // Replace with the actual recipient's email address
+    const subject = "Subject goes here"; // Replace with the desired subject
+    const body = "Email body goes here"; // Replace with the desired email body
+
+    const mailtoLink = `mailto:${recipientEmail}?subject=${subject}&body=${body}`;
+
+    window.location.href = mailtoLink;
+  };
+
   return (
     <div className="cta-container">
       <div className="text">
@@ -11,7 +23,7 @@ const CTA = () => {
         <p>Gör vardagsmaten lite hetare</p>
       </div>
       <div className="action-button">
-        <button>Kontakta oss</button>
+        <button onClick={openOutlook}> Kontakta oss</button>
       </div>
     </div>
   );
