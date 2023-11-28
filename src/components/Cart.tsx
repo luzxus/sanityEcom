@@ -28,7 +28,6 @@ const Cart = () => {
   const handleCheckout = async () => {
     const stripe = await getStripe()
 
-    console.log('env', process.env.NEXT_STRIPE_PUBLIC_PUBLISH_KEY)
 
     const cartData: any[] = cartItems
       ? cartItems.map((item) => ({
@@ -37,7 +36,6 @@ const Cart = () => {
         }))
       : []
 
-    console.log('cartData', cartData)
     try {
       const response = await fetch('/api/stripe', {
         method: 'POST',

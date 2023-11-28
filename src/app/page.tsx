@@ -32,8 +32,6 @@ const HomePage = () => {
 
   const [currentFourProducts, setCurrentFourProducts] = useState<any[]>([]);
 
-  console.log("current products", currentFourProducts);
-  console.log("current index", productStartIndex);
   const handleNextProducts = () => {
     setProductStartIndex((prev) => prev + 1);
 

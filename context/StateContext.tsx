@@ -116,7 +116,6 @@ export const StateContext = ({ children }: Props) => {
       }
     }
   }
-  console.log('show cart', showCart)
   const incQty = () => {
     setQty((prev) => prev + 1)
   }

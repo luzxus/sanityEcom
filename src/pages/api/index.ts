@@ -42,15 +42,12 @@ export const fetchCategories = async () => {
     categories,
     tags,
   };
-  console.log("DATA", data);
   return {
     props: data,
   };
 };
 
 export const fetchProductsByCategory = async (category: string) => {
-  console.log("category to fetch", category);
-
   const query = `*[_type == "product" && category->slug.current == $qc] {
     name,
     slug,
@@ -65,8 +62,48 @@ export const fetchProductsByCategory = async (category: string) => {
   const params = { qc: category }; // Define parameters object
 
   const result = await client.fetch(query, params); // Pass parameters to the fetch method
+
+  const bannerQuery = `*[_type == "banner" && category._ref in *[_type == "category" && slug.current == $qc]._id][0]{
+    buttonText,
+      saleTime,
+      largeText1,
+      discount,
+      midText,
+      "bannerImageUrl":image.asset -> url
+  }
+  `;
+  const banners = await client.fetch(bannerQuery, params);
+
   return {
-    data: result,
+    products: result,
+    bannerData: banners,
+  };
+};
+
+export const fetchTags = async () => {
+  const query = `*[_type == "tag"]{
+    "slug": slug.current
+  }`;
+
+  const data = await client.fetch(query);
+  return {
+    tags: data,
+  };
+};
+export const fetchProductsByTags = async (category: string) => {
+  console.log("category tag to fetch", category);
+  const query = `*[_type == "product" && $qc in tags[] -> slug.current] {
+    ...,
+    "tags": tags[]->slug.current
+  }
+  `;
+
+  const params = { qc: category }; // Define parameters object
+
+  const result = await client.fetch(query, params); // Pass parameters to the fetch method
+
+  return {
+    tagProducts: result,
   };
 };
 

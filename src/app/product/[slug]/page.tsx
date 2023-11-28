@@ -33,7 +33,6 @@ const ProductDetails = () => {
   const [products, setProducts] = useState<any[]>()
   const slugParam = useParams()
   const slug = (slugParam && slugParam.slug) ?? ''
-  console.log('slug', slug.toString())
 
   useEffect(() => {
     fetchData({

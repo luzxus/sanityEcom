@@ -18,14 +18,10 @@ export default {
       type: "string",
     },
     {
-      name: "product",
-      title: "Product",
-      type: "string",
-    },
-    {
-      name: "desc",
-      title: "Desc",
-      type: "string",
+      name: "category",
+      title: "Category",
+      type: "reference",
+      to: [{ type: "category" }], // Reference to the category schema
     },
     {
       name: "smallText",
@@ -49,7 +45,7 @@ export default {
     },
     {
       name: "discount",
-      title: "Discount",
+      title: "Discount text",
       type: "string",
     },
     {
