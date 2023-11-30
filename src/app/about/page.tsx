@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { client } from 'sanity/lib/client'
 import { fetchAboutData } from '@/pages/api'
+import { Oval } from 'react-loader-spinner'
 interface AboutData {
   title: string
   paragraph1: string
@@ -28,7 +29,23 @@ const Page = () => {
   }, [])
   console.log('about data', aboutData)
   if (!aboutData) {
-    return <div>Loading...</div>
+    return (
+      <div>
+        {' '}
+        <Oval
+          height={80}
+          width={80}
+          color="#4fa94d"
+          wrapperStyle={{}}
+          wrapperClass="spinner-loader"
+          visible={true}
+          ariaLabel="oval-loading"
+          secondaryColor="#4fa94d"
+          strokeWidth={2}
+          strokeWidthSecondary={2}
+        />
+      </div>
+    )
   }
 
   const {

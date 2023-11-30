@@ -255,14 +255,11 @@ span.text-red {
 }
 .banner-desc .left p {
   margin: 18px;
-  
 }
 .banner-desc .right h1 {
   font-size: 5rem;
 }
 .banner-desc .right h2 {
-  
-
   font-size: 2rem;
 }
 .banner-desc .left h3 {
@@ -272,7 +269,6 @@ span.text-red {
 .banner-desc .left h4 {
   margin-inline-start: 1rem;
   margin-bottom: 1rem;
- 
 }
 .banner-desc .right .company-desc {
   font-size: 14px;
@@ -666,10 +662,10 @@ span.text-red {
   .banner-desc .right h2 {
     font-size: 18px;
   }
-  
-.banner-desc .right h1 {
-  font-size: 60px;
-}
+
+  .banner-desc .right h1 {
+    font-size: 60px;
+  }
   .banner-desc .right p {
     font-size: 18px;
   }
@@ -803,6 +799,14 @@ span.text-red {
   overflow: scroll;
   display: flex;
   flex: 1;
+}
+
+.spinner-loader {
+  align-items: center;
+  display: flex;
+  margin: 5rem;
+  height: 55vh;
+  justify-content: center;
 }
 .categories-list::-webkit-scrollbar-thumb {
   border: 1px solid rgb(193, 193, 193);
@@ -1123,16 +1127,16 @@ span.text-red {
   color: black;
 }
 
-@media (max-width: 768) {
-}
-.category-banner-container h2 {
-  font-size: 2rem;
-}
-.category-banner-container h3 {
-  font-size: 3rem;
-}
-.category-banner-container h4 {
-  font-size: 1rem;
+@media screen and (max-width: 768px) {
+  .category-banner-container h2 {
+    font-size: 2rem;
+  }
+  .category-banner-container h3 {
+    font-size: 3rem;
+  }
+  .category-banner-container h4 {
+    font-size: 1rem;
+  }
 }
 /* footer banner */
 .category-banner-container {
@@ -1146,7 +1150,7 @@ span.text-red {
 .large-text-container {
   position: absolute;
   color: white;
-  font-size: 200%;
+  filter: drop-shadow(2px 4px 6px black);
 }
 
 .alternative-product-text-container {

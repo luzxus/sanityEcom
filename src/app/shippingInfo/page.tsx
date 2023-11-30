@@ -1,6 +1,14 @@
-// FraktInformation.js
-import React from 'react';
+import { Metadata } from 'next'
 
+// Define metadata for SEO
+export const metadata: Metadata = {
+  title: 'Fraktinformation - drömföretaget',
+  description:
+    'Läs vår fraktinformation för att få reda på leveranstider och priser för leverans inom Sverige, EU och utanför EU. Kontakta oss om du har ytterligare frågor.',
+  // other metadata
+}
+
+// FraktInformation component
 const FraktInformation = () => {
   return (
     <div className="frakt-container">
@@ -9,10 +17,13 @@ const FraktInformation = () => {
       {/* Section 1: Order Processing and Free Shipping (Sverige) */}
       <section className="section">
         <p>
-          Alla ordrar packas och skickas inom 1-5 arbetsdagar och beställningar (inom Sverige) över 500kr innebär fri frakt.
+          Alla ordrar packas och skickas inom 1-5 arbetsdagar och beställningar
+          (inom Sverige) över 500kr innebär fri frakt.
         </p>
         <p>
-          Observera att vid förbeställning så skickas din beställning när samtliga produkter finns på lager, det innebär att det blir längre leveranstid och det får du info om i samband med din order.
+          Observera att vid förbeställning skickas din beställning när samtliga
+          produkter finns på lager, vilket kan medföra längre leveranstid. Mer
+          information kommer med din orderbekräftelse.
         </p>
       </section>
 
@@ -20,7 +31,8 @@ const FraktInformation = () => {
       <section className="section">
         <h3>Frakt inom Sverige med Postnord</h3>
         <p>
-          Alla ordrar skickas med postnord och frakten beräknas i kassan efter vikt.
+          Alla ordrar skickas med Postnord, och fraktkostnaden beräknas i kassan
+          baserat på vikt.
         </p>
         <ul>
           <li>0g-50g: 15kr</li>
@@ -37,7 +49,7 @@ const FraktInformation = () => {
       {/* Section 3: Shipping outside Sweden within EU */}
       <section className="section">
         <h3>Frakt utanför Sverige men inom EU</h3>
-        <p>Leveranstid är 1-20 dagar ungefär</p>
+        <p>Leveranstid är 1-20 dagar ungefär.</p>
         <ul>
           <li>0-50g: 119kr</li>
           <li>50g-100g: 134kr</li>
@@ -48,7 +60,7 @@ const FraktInformation = () => {
       {/* Section 4: Shipping outside EU */}
       <section className="section">
         <h3>Frakt utanför EU</h3>
-        <p>Leveranstid 4-30 dagar</p>
+        <p>Leveranstid 4-30 dagar.</p>
         <ul>
           <li>0-250g: 108kr</li>
           <li>250g-1kg: 156kr</li>
@@ -62,7 +74,7 @@ const FraktInformation = () => {
         <p>Har ni några frågor gällande frakt så kontakta oss.</p>
       </section>
     </div>
-  );
-};
+  )
+}
 
-export default FraktInformation;
+export default FraktInformation

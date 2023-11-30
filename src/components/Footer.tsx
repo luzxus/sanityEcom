@@ -18,7 +18,7 @@ const Footer = () => {
   }, [])
   return (
     <div className="footer-container">
-      <p>Created by Stellar Solutions for WarningChiliZone</p>
+      <p>Created by Stellar Solutions for drömföretaget</p>
       <p className="icons">
         <AiFillInstagram />
         <AiOutlineTwitter />

@@ -5,10 +5,12 @@ import './globals.css'
 import { Analytics } from '@vercel/analytics/react'
 import { StateContext } from '../../context/StateContext'
 import { Toaster } from 'react-hot-toast'
+import { Suspense } from 'react'
+import Loading from './loading'
 const inter = Inter({ subsets: ['latin'] })
 /* className={inter.className} */
 export const metadata: Metadata = {
-  title: 'WarningChiliZone.se',
+  title: 'drömföretaget.se',
   description: 'Chili produkter på svenska marknaden',
 }
 
@@ -22,11 +24,13 @@ export default function RootLayout({
       <body>
         <StateContext>
           <div className="layout">
-            <Toaster/>
+            <Toaster />
             <header>
               <Navbar />
             </header>
-            <main className="main-container">{children}</main>
+            <Suspense fallback={<Loading />}>
+              <main className="main-container">{children}</main>
+            </Suspense>
             <footer>
               <Footer />
             </footer>

@@ -1,68 +1,81 @@
-"use client";
-import { fetchData } from "@/pages/api";
-import { FooterBanner, HeroBanner, Product } from "../components/index";
-import { AiOutlineArrowRight } from "react-icons/ai";
-import { useEffect, useMemo, useState } from "react";
-import Carousel from "@/components/Carousel";
+'use client'
+import { fetchData } from '@/pages/api'
+import { FooterBanner, HeroBanner, Product } from '../components/index'
+import { AiOutlineArrowRight } from 'react-icons/ai'
+import { useEffect, useMemo, useState } from 'react'
+import Carousel from '@/components/Carousel'
+import { Audio, Oval } from 'react-loader-spinner'
+
 //eftersom denna är skapad i root dir så blir detta våran / route sida
 
 const HomePage = () => {
-  const [bannerData, setBannerData] = useState<any[]>([]);
-  const [images, setImages] = useState<any[]>([]);
-  const [products, setProducts] = useState<any[]>([] as any);
+  const [bannerData, setBannerData] = useState<any[]>([])
+  const [images, setImages] = useState<any[]>([])
+  const [products, setProducts] = useState<any[]>([] as any)
 
-  const [productStartIndex, setProductStartIndex] = useState(0);
+  const [productStartIndex, setProductStartIndex] = useState(0)
 
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
-    window && window.innerWidth < 768 && setIsMobile(true);
-  }, []);
+    window && window.innerWidth < 768 && setIsMobile(true)
+  }, [])
 
   useEffect(() => {
     fetchData().then((res) => {
-      setBannerData(res.props.bannerData);
-      setImages(res.props.images);
-      setProducts(res.props.products);
+      setBannerData(res.props.bannerData)
+      setImages(res.props.images)
+      setProducts(res.props.products)
       setCurrentFourProducts(
-        res.props.products.slice(0, products.length >= 4 ? 4 : products.length)
-      );
-    });
-  }, [products.length]);
+        res.props.products.slice(0, products.length >= 4 ? 4 : products.length),
+      )
+    })
+  }, [products.length])
 
-  const [currentFourProducts, setCurrentFourProducts] = useState<any[]>([]);
+  const [currentFourProducts, setCurrentFourProducts] = useState<any[]>([])
 
   const handleNextProducts = () => {
-    setProductStartIndex((prev) => prev + 1);
+    setProductStartIndex((prev) => prev + 1)
 
-    const nextIndex = productStartIndex + 1;
+    const nextIndex = productStartIndex + 1
 
     //om det finns fler produkter än nästkommande 4 index värden
     if (products.length >= nextIndex + 4) {
-      setCurrentFourProducts(products.slice(nextIndex, nextIndex + 4));
+      setCurrentFourProducts(products.slice(nextIndex, nextIndex + 4))
     } else {
       // If there are fewer than 4 products remaining, you may want to adjust the logic.
       // Here, it repeats the products in a circular manner.
-      const remainingProducts = products.length - nextIndex;
+      const remainingProducts = products.length - nextIndex
       const nextSetOfProducts = products.slice(
         nextIndex,
-        nextIndex + remainingProducts
-      );
-      nextSetOfProducts.push(...products.slice(0, 4 - remainingProducts));
+        nextIndex + remainingProducts,
+      )
+      nextSetOfProducts.push(...products.slice(0, 4 - remainingProducts))
 
       if (nextSetOfProducts.length > 4) {
-        setProductStartIndex(0);
-        setCurrentFourProducts(nextSetOfProducts.slice(0, 4));
+        setProductStartIndex(0)
+        setCurrentFourProducts(nextSetOfProducts.slice(0, 4))
       } else {
-        setCurrentFourProducts(nextSetOfProducts);
+        setCurrentFourProducts(nextSetOfProducts)
       }
     }
-  };
+  }
 
   return (
     <>
       {!bannerData[0] || !products[0] ? (
-        "loading"
+        <Oval
+        height={80}
+        width={80}
+        color="#4fa94d"
+        wrapperStyle={{}}
+        wrapperClass="spinner-loader"
+        visible={true}
+        ariaLabel='oval-loading'
+        secondaryColor="#4fa94d"
+        strokeWidth={2}
+        strokeWidthSecondary={2}
+        />
       ) : (
         <div>
           <HeroBanner
@@ -80,7 +93,7 @@ const HomePage = () => {
                   currentFourProducts?.map((product: any) => (
                     <div
                       className="product-arrow-container"
-                      key={product._id.concat("container")}
+                      key={product._id.concat('container')}
                     >
                       <Product product={product} key={product._id} />
                       <div
@@ -106,7 +119,7 @@ const HomePage = () => {
         </div>
       )}
     </>
-  );
-};
+  )
+}
 
-export default HomePage;
+export default HomePage

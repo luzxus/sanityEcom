@@ -43,7 +43,7 @@ const Navbar = () => {
         <div className="mobile-menu">
           <div className="pages-list">
             <p className="logo">
-              {!toggleMenu && <Link href="/">Warning Chilizone</Link>}
+              {!toggleMenu && <Link href="/">Drömföretaget</Link>}
             </p>
 
             <p className="submenu-title" style={{ marginTop: "4rem" }}>
@@ -90,7 +90,7 @@ const Navbar = () => {
       <div className="desktop-menu">
         <div className="pages-list">
           <p className="logo">
-            <Link href="/">Warning Chilizone</Link>
+            <Link href="/">Drömföretaget</Link>
           </p>
           {pages.map((page) => (
             <Link
